@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libin.a  CMakeFiles/in.dir/boon_in.cpp.o
+/usr/bin/ranlib ../../lib/libin.a

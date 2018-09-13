@@ -1,0 +1,2 @@
+/usr/bin/ar qc libmsgqueue.a  CMakeFiles/msgqueue.dir/boon_msgqueue.cpp.o CMakeFiles/msgqueue.dir/boon_condition.cpp.o CMakeFiles/msgqueue.dir/boon_mutex.cpp.o
+/usr/bin/ranlib libmsgqueue.a

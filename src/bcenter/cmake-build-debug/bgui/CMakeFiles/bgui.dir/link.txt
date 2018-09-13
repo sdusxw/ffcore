@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbgui.a  CMakeFiles/bgui.dir/boon_bgui.cpp.o
+/usr/bin/ranlib libbgui.a

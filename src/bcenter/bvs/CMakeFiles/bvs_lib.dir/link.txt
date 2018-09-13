@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libbvs_lib.a  CMakeFiles/bvs_lib.dir/boon_bvs.cpp.o
+/usr/bin/ranlib ../../lib/libbvs_lib.a

@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libout.a  CMakeFiles/out.dir/boon_out.cpp.o
+/usr/bin/ranlib ../../lib/libout.a

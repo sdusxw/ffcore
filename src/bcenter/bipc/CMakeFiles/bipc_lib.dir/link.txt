@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libbipc_lib.a  CMakeFiles/bipc_lib.dir/boon_bipc.cpp.o
+/usr/bin/ranlib ../../lib/libbipc_lib.a

@@ -1,0 +1,987 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="BCENTER"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\main\;CMake Files\mongodb\;CMake Files\msgqueue\;CMake Files\mysql\;CMake Files\bipc\;CMake Files\global\;CMake Files\in\;CMake Files\out\;CMake Files\bop\;CMake Files\bvs\;CMake Files\bgui\;CMake Files\chewei\;CMake Files\test_mongo\;CMake Files\bled\;CMake Files\wx\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bcenter">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/bcenter" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 bcenter"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bcenter/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/bcenter" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 bcenter/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/main/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mongodb">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/libmongodb.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 mongodb"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mongodb/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/libmongodb.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 mongodb/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mongodb/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="msgqueue">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/libmsgqueue.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 msgqueue"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="msgqueue/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/libmsgqueue.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 msgqueue/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/msgqueue/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mysql">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/libmysql.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/mysql"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 mysql"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mysql/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/libmysql.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/mysql"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 mysql/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/mysql/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bipc_lib">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/libbipc_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 bipc_lib"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bipc_lib/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/libbipc_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 bipc_lib/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bipc/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/libglobal.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 global"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="global/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/libglobal.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 global/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/global/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="in">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/libin.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 in"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="in/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/libin.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 in/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/in/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="out">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/libout.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 out"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="out/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/libout.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 out/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/out/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bop">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/libbop.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 bop"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bop/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/libbop.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 bop/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bop/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bvs_lib">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/libbvs_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 bvs_lib"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bvs_lib/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/libbvs_lib.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 bvs_lib/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bvs/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bgui">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/libbgui.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bgui/.."/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 bgui"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="bgui/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/libbgui.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bgui/.."/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 bgui/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bgui/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="chewei">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/libchewei.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 chewei"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="chewei/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/libchewei.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 chewei/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/chewei/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_mongo">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/libtest_mongo.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 test_mongo"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_mongo/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/libtest_mongo.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 test_mongo/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/test_mongo/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="boon_bled">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/libbled.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 boon_bled"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="boon_bled/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/libbled.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 boon_bled/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/bled/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="wx">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/libwx.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 wx"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="wx/fast">
+				<Option output="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/libwx.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/../include"/>
+					<Add directory="/usr/local/include/libmongoc-1.0"/>
+					<Add directory="/usr/local/include/libbson-1.0"/>
+					<Add directory="/usr/local/include/mongocxx/v_noabi"/>
+					<Add directory="/usr/include/c++/4.8"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/4.8"/>
+					<Add directory="/usr/include/c++/4.8/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/4.8/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 wx/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/cmake-build-debug/wx/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bgui/boon_bgui.cpp">
+			<Option target="bgui"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bgui/boon_bgui.h">
+			<Option target="bgui"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bipc/boon_bipc.cpp">
+			<Option target="bipc_lib"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bipc/boon_bipc.h">
+			<Option target="bipc_lib"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bled/boon_bled.cpp">
+			<Option target="boon_bled"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bled/boon_bled.h">
+			<Option target="boon_bled"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bop/boon_bop.cpp">
+			<Option target="bop"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bop/boon_bop.h">
+			<Option target="bop"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bvs/boon_bvs.cpp">
+			<Option target="bvs_lib"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bvs/boon_bvs.h">
+			<Option target="bvs_lib"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/chewei/boon_chewei.cpp">
+			<Option target="chewei"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/chewei/boon_chewei.h">
+			<Option target="chewei"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/global/boon_global.cpp">
+			<Option target="global"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/global/boon_global.h">
+			<Option target="global"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/global/clock.cpp">
+			<Option target="global"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/global/clock.h">
+			<Option target="global"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/in/boon_in.cpp">
+			<Option target="in"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/in/boon_in.h">
+			<Option target="in"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/main/booncrypto.cpp">
+			<Option target="bcenter"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/main/booncrypto.h">
+			<Option target="bcenter"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/main/main.cpp">
+			<Option target="bcenter"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/mongodb/boon_mongodb.cpp">
+			<Option target="mongodb"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/mongodb/boon_mongodb.h">
+			<Option target="mongodb"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/msgqueue/boon_condition.cpp">
+			<Option target="msgqueue"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/msgqueue/boon_condition.h">
+			<Option target="msgqueue"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/msgqueue/boon_msgqueue.cpp">
+			<Option target="msgqueue"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/msgqueue/boon_msgqueue.h">
+			<Option target="msgqueue"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/msgqueue/boon_mutex.cpp">
+			<Option target="msgqueue"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/msgqueue/boon_mutex.h">
+			<Option target="msgqueue"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/mysql/boon_mysql.cpp">
+			<Option target="mysql"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/mysql/boon_mysql.h">
+			<Option target="mysql"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/out/boon_out.cpp">
+			<Option target="out"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/out/boon_out.h">
+			<Option target="out"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/test_mongo/boon_test_mongo.cpp">
+			<Option target="test_mongo"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/test_mongo/boon_test_mongo.h">
+			<Option target="test_mongo"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/wx/boon_wx.cpp">
+			<Option target="wx"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/wx/boon_wx.h">
+			<Option target="wx"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/main/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\main\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/mongodb/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\mongodb\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/msgqueue/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\msgqueue\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/mysql/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\mysql\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bipc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\bipc\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/global/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\global\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/in/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\in\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/out/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\out\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bop/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\bop\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bvs/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\bvs\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bgui/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\bgui\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/chewei/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\chewei\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/test_mongo/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\test_mongo\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/bled/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\bled\"/>
+		</Unit>
+		<Unit filename="/home/boon/svn/svnpro/minyong/branches/bcenter/bcenter2bipc/source/bcenter/wx/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\wx\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

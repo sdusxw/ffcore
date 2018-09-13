@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbled.a  CMakeFiles/boon_bled.dir/boon_bled.cpp.o
+/usr/bin/ranlib libbled.a

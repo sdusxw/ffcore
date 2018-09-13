@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libmysql.a  CMakeFiles/mysql.dir/boon_mysql.cpp.o
+/usr/bin/ranlib ../../lib/libmysql.a

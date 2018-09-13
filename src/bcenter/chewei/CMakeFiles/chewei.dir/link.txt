@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libchewei.a  CMakeFiles/chewei.dir/boon_chewei.cpp.o
+/usr/bin/ranlib ../../lib/libchewei.a

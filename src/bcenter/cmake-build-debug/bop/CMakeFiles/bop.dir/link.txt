@@ -1,0 +1,2 @@
+/usr/bin/ar qc libbop.a  CMakeFiles/bop.dir/boon_bop.cpp.o
+/usr/bin/ranlib libbop.a

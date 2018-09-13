@@ -1,0 +1,2 @@
+/usr/bin/ar qc libtest_mongo.a  CMakeFiles/test_mongo.dir/boon_test_mongo.cpp.o
+/usr/bin/ranlib libtest_mongo.a

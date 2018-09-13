@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../../lib/libmongodb.a  CMakeFiles/mongodb.dir/boon_mongodb.cpp.o
+/usr/bin/ranlib ../../lib/libmongodb.a
