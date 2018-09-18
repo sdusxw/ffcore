@@ -64,7 +64,7 @@ void initParm();
 
 int main(void)
 {
-    std::string version = "程序版本号: 3.1415_20180411 1930 new 标准版!";
+    std::string version = "程序版本号: 3.14_20190913 ffcore过渡版!";
 
     writelog(version.c_str());
     std::cout<< version <<std::endl;

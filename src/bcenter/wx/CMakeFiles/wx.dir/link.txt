@@ -1,2 +1,0 @@
-/usr/bin/ar qc ../../lib/libwx.a  CMakeFiles/wx.dir/boon_wx.cpp.o
-/usr/bin/ranlib ../../lib/libwx.a
