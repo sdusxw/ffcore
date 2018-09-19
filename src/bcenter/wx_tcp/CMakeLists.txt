@@ -29,6 +29,8 @@ add_library(wx_tcp
     wx_tcp.cpp
     net_tcp.h
     net_tcp.cpp
+    concurrent_queue.h
+    concurrent_queue.cpp
 )
 
 target_link_libraries(wx_tcp ${LIB_LIST} )

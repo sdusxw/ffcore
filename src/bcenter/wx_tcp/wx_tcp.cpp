@@ -14,7 +14,6 @@
 #include "common_def.h"
 #include "../bcenter_def.h"
 
-
 #include "net_tcp.h"
 #include "wx_tcp.h"
 
@@ -23,6 +22,11 @@ using namespace BASE;
 static char log_buf_[LOG_BUF_SIZE] = {0};
 
 extern pthread_mutex_t mongo_mutex_car;
+
+bool wx_tcp_init() //初始化微信tcp支付消息
+{
+    return true;
+}
 
 /**************************************************wx监听线程******************************/
 void* wx_tcp_thread(void *)

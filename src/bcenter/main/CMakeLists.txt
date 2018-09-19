@@ -14,6 +14,6 @@ add_executable(bcenter
 )
 
 
-target_link_libraries(bcenter pthread mongodb msgqueue mysql  bipc_lib global in out bop bvs_lib bgui chewei test_mongo boon_bled  wx jsoncpp)
+target_link_libraries(bcenter pthread mongodb msgqueue mysql  bipc_lib global in out bop bvs_lib bgui chewei test_mongo boon_bled  wx wx_tcp jsoncpp)
 
 set_target_properties(bcenter PROPERTIES OUTPUT_NAME bcenter)

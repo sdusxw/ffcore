@@ -16,29 +16,41 @@
 #include <pthread.h>
 #include <semaphore.h>
 #include <queue>
-#include <sys/poll.h>
-#include <sys/time.h>
+
+#include "concurrent_queue.h"
+
+using namespace std;
 
 #define BUF_LEN 1024   //缓冲区大小
-#define SERV_PORT 8080 //通讯端口
+#define SERV_PORT 6000 //通讯端口
 #define FD_SIZE 100    //FD_SIZE为select函数支持的最大描述符个数
 #define MAX_BACK 100   //listen队列中等待的连接数
 
-#define BACKLOG 10               //listen队列中等待的连接数
-#define MAXDATASIZE 4096        //缓冲区大小
-
-typedef struct _CLIENT
+class NetTcpServer
 {
-	int fd;                     //客户端socket描述符
-	char name[20];              //客户端名称
-	struct sockaddr_in addr;    //客户端地址信息结构体
-	char data[MAXDATASIZE];     //客户端私有数据指针
-} CLIENT;
+public:
+	int listenfd, connfd, sockfd, maxfd, maxi, i;  //socket文件描述符
+	int cur_sock;
+	int nready, client[FD_SIZE];        //!> 接收select返回值、保存客户端套接字。客户端私有数据指针
+	int lens;
+	ssize_t n;                //!> read字节数
+	fd_set rset, allset;    //!> 不要理解成就只能保存一个，其实fd_set有点像封装的数组；//select所需的文件描述符集合
+	char buf[BUF_LEN];
+	socklen_t clilen;
+	struct sockaddr_in servaddr, chiaddr;//服务器地址信息结构体
 
-int receivedata(int socket, char * data, int length, int timeout,
-		unsigned int * scope_id);
+	//queue<std::pair<int, string> > *msg_buff;
+	concurrent_queue<std::pair<int, string> > *msg_buff;
 
-void * getHTTPResponse(int s, int * size);
+public:
+	NetTcpServer();
+	~NetTcpServer();
+	bool open_bind_listen();
+
+	bool get_message();
+
+	bool send_message(string msg);
+};
 
 class NetTcpClient
 {
@@ -46,50 +58,12 @@ public:
 	NetTcpClient();
 	~NetTcpClient();
 
-	bool connect_server(std::string server_ip, int server_port);
-	size_t send_data(std::string send_msg, std::string &recv_msg);
-	void dis_connect();
+	bool Connect(string server_ip, int server_port);
+	size_t SendData(char * pData, size_t len);
+
 public:
 	int connfd;
-	struct sockaddr_in servaddr;     //服务器地址信息结构体
-};
-
-class NetHttpServer
-{
-public:
-	bool open_bind_listen(int listen_port);
-	bool get_message(std::string &msg);
-
-public:
-	int i, maxi, maxfd, sockfd;
-	int nready;
-	ssize_t n;
-	fd_set rset, allset;        //select所需的文件描述符集合
-	int listenfd, connectfd;    //socket文件描述符
-	struct sockaddr_in server;  //服务器地址信息结构体
-
-	CLIENT client[FD_SETSIZE];  //FD_SETSIZE为select函数支持的最大描述符个数
-	char recvbuf[MAXDATASIZE];  //缓冲区
-	int sin_size;               //地址信息结构体大小
-};
-
-class NetTcpServer
-{
-public:
-    bool open_bind_listen(int listen_port);
-    bool get_message(std::string &msg);
-    
-public:
-    int i, maxi, maxfd, sockfd;
-    int nready;
-    ssize_t n;
-    fd_set rset, allset;        //select所需的文件描述符集合
-    int listenfd, connectfd;    //socket文件描述符
-    struct sockaddr_in server;  //服务器地址信息结构体
-    
-    CLIENT client[FD_SETSIZE];  //FD_SETSIZE为select函数支持的最大描述符个数
-    char recvbuf[MAXDATASIZE];  //缓冲区
-    int sin_size;               //地址信息结构体大小
+	struct sockaddr_in servaddr;//服务器地址信息结构体
 };
 
 #endif

@@ -14,6 +14,7 @@
 #include "../bvs/boon_bvs.h"
 #include "../in/boon_in.h"
 #include "../wx/boon_wx.h"
+#include "../wx_tcp/wx_tcp.h"
 #include "../out/boon_out.h"
 #include "../bgui/boon_bgui.h"
 #include "../chewei/boon_chewei.h"

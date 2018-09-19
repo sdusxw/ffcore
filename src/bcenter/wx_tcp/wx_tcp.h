@@ -6,6 +6,8 @@
 #include "../mongodb/boon_mongodb.h"
 #include "../msgqueue/boon_msgqueue.h"
 
+bool wx_tcp_init(); //初始化微信tcp支付消息
+
 
 void* wx_tcp_thread(void *); //wx_tcp监听线程
 
