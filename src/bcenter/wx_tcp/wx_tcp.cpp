@@ -84,6 +84,11 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
         }
         else
         {
+            pthread_mutex_lock(&mongo_mutex_car);
+            
+            if(mongodb_flag)
+                mongodb_connect();
+            
             std::string str_cmd = json_object["cmd"].asString();
             std::string name;
             std::string park_id;
@@ -105,6 +110,10 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
                 // 场内查询支付费用 char *park_id, char *box_ip, char *plate, char *openid, char* userid, char *outime
                 mongodb_process_wx_tcp_query_fee_in(str_cmd.c_str(), park_id.c_str(), plate.c_str(), openid.c_str(), userid.c_str(), outime.c_str(), sockfd);
             }
+            if(mongodb_flag)
+                mongodb_exit();
+            
+            pthread_mutex_unlock(&mongo_mutex_car);
         }
     }
 }
