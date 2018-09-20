@@ -43,6 +43,7 @@ pthread_t pid_db;
 pthread_t pid_chewei;
 pthread_t pid_bled;
 pthread_t pid_wx;
+pthread_t pid_wx_tcp;
 
 // 是否加入万能语音功能， 不在此赋值
 bool g_has_wanwangyuyin_;
@@ -203,6 +204,9 @@ int main(void)
 
     pthread_create(&pid_wx, NULL, wx_thread, NULL);
     pthread_detach(pid_wx);
+    //WX_TCP 2018-09-20 孙希伟、孙振行加入
+    pthread_create(&pid_wx_tcp, NULL, wx_tcp_thread, NULL);
+    pthread_detach(pid_wx_tcp);
 
     /*****************************************end***************************************/
 
