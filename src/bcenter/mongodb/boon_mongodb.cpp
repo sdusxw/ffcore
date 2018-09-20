@@ -10944,8 +10944,7 @@ int mogodbb_process_wx_sendto_bled(const std::string& _msg)
 int mogodbb_process_wx_tcp_send(const std::string& _msg, int sock) // tcp消息
 {
     int n = write(sock, _msg.c_str(), _msg.length());
-    // 将发送的消息内容写入日志
-    write_log(_msg.c_str());
+    printf("wx_tcp send:\t%s\n", _msg.c_str());
 }
 
 /**
