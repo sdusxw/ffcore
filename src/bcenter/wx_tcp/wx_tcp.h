@@ -13,6 +13,6 @@ void* wx_tcp_thread(void *); //wx_tcp监听线程
 void* wx_tcp_msg(void *); //wx_tcp消息处理线程
 
 // 写入日志
-void writelog(const char* _buf);
+static void writelog(const char* _buf);
 
 #endif
