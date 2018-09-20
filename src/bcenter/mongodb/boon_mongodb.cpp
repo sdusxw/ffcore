@@ -10945,6 +10945,7 @@ int mogodbb_process_wx_tcp_send(const std::string& _msg, int sock) // tcp消息
 {
     int n = write(sock, _msg.c_str(), _msg.length());
     printf("wx_tcp send:\t%s\n", _msg.c_str());
+    close(sock);
 }
 
 /**
