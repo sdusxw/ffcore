@@ -22,6 +22,8 @@ set(LIB_LIST
         bson-1.0
         mysql
         bsoncxx
+        boost_system
+        boost_thread
 )
 
 add_library(wx_tcp

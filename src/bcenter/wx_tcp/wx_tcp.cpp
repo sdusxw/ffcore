@@ -33,14 +33,14 @@ static concurrent_queue<std::pair<int, string> > g_msg_buff;        //消息队�
 bool wx_tcp_init() //初始化微信tcp支付消息
 {
     //初始化网络设置 tcp_server网络服务器
-    writelog("Network Initializing...");
+    write_log("Network Initializing...");
     if (tcp_server.open_bind_listen()) {
         tcp_server.msg_buff = &g_msg_buff;
     } else {
-        writelog("TCP initialization failed, Please check port 6000.");
+        write_log("TCP initialization failed, Please check port 6000.");
         exit(EXIT_FAILURE);
     }
-    writelog("Network Initialization OK");
+    write_log("Network Initialization OK");
     return true;
 }
 
@@ -69,7 +69,7 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
         string msg = msg_info.second;
         // 将收到的消息内容写入日志
         cout << " recv_msg " << msg << endl;
-        writelog(msg.c_str());
+        write_log(msg.c_str());
         char response_buf[1024] = "response";
         // Analyze the message
         
@@ -79,12 +79,12 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
         string str_response = response_buf;
         cout << " str_response " << str_response << endl;
         // 将发送的消息内容写入日志
-        writelog(str_response.c_str());
+        write_log(str_response.c_str());
     }
 }
 
 // 写入日志
-void writelog(const char* _buf)
+void write_log(const char* _buf)
 {
     BLog::writelog(_buf, PKGDATA, LOG_DIR_NAME, LOG_FILE_NAME);
 }
