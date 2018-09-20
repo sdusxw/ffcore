@@ -61,7 +61,9 @@ int mongodb_process_wx_fangxing(); // 微信支付成功后，需要放行,并�
 int mongodb_process_wx_opendoor(); // 由wx向bled发送消息 (微信支付成功后，需要放行,并语音播报)
 int mogodbb_process_wx_sendto_bled(const std::string& _msg); // udp消息
 int mogodbb_process_wx_udp_send(const std::string& _msg, const std::string& _ip, const int& _port); // udp消息
+int mogodbb_process_wx_tcp_send(const std::string& _msg, int sock); // tcp消息
 int mongodb_process_wx_query_fee_in(const char* _in_cmd, const char *park_id, const char *plate, const char *openid, const char* userid, const char *outime); // 场内查询支付费用
+int mongodb_process_wx_tcp_query_fee_in(const char* _in_cmd, const char *_in_park_id, const char *_in_plate, const char *_in_openid, const char* _in_userid, const char *_in_outime, int sock);//TCP场内查询支付费用
 
 //******* 扫码枪业务逻辑 *********
 bool mongodb_bgui_smq_insert(Json::Value& _in_json_value); // 扫码枪的数据入库

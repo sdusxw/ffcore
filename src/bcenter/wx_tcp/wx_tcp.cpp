@@ -62,6 +62,7 @@ void* wx_tcp_thread(void *)
 
 void* wx_tcp_msg(void *) //wx_tcp消息处理线程
 {
+    std::string log_str="";
     while (true) {
         std::pair<int, string> msg_info;
         g_msg_buff.wait_and_pop(msg_info);
@@ -72,14 +73,39 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
         write_log(msg.c_str());
         char response_buf[1024] = "response";
         // Analyze the message
+        Json::Reader reader;
+        Json::Value json_object;
         
-        memcpy(response_buf, msg.c_str(), msg.length());//test
-        
-        int n = write(sockfd, response_buf, strlen(response_buf));
-        string str_response = response_buf;
-        cout << " str_response " << str_response << endl;
-        // 将发送的消息内容写入日志
-        write_log(str_response.c_str());
+        if (!reader.parse(msg, json_object))
+        {
+            //JSON格式错误导致解析失败
+            log_str = "[json]解析失败";
+            write_log(log_str.c_str());
+        }
+        else
+        {
+            std::string str_cmd = json_object["cmd"].asString();
+            std::string name;
+            std::string park_id;
+            std::string box_ip;
+            std::string plate;
+            std::string openid;
+            std::string userid;
+            std::string money;
+            std::string flag;
+            std::string outime;
+            if (str_cmd == "query_pay") {
+                park_id = json_object["park_id"].asString();
+                box_ip = json_object["box_ip"].asString();
+                plate = json_object["plate"].asString();
+                openid = json_object["openid"].asString();
+                userid = json_object["userid"].asString();
+                outime = json_object["outime"].asString();
+                
+                // 场内查询支付费用 char *park_id, char *box_ip, char *plate, char *openid, char* userid, char *outime
+                mongodb_process_wx_tcp_query_fee_in(str_cmd.c_str(), park_id.c_str(), plate.c_str(), openid.c_str(), userid.c_str(), outime.c_str(), sockfd);
+            }
+        }
     }
 }
 
