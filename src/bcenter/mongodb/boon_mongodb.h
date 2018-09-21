@@ -53,10 +53,17 @@ int mongodb_speak_wannengyuyin(char *in_out, char *plate, char* car_type, int fe
 
 //********* 微信支付逻辑 ********
 int mongodb_process_wx_carout(char *name,char *park_id,char *box_ip,char *plate1,char *openid, char *outime, char* userid);
+int mongodb_process_wx_tcp_carout(char *name,char *park_id,char *box_ip,char *plate1,char *openid, char *outime, char* userid, int sock);
 int mongodb_process_wx_pay_open( char *money,char *park_id,char * box_ip,char *plate,char *openid, char *flag, char* userid); // 出口，支付完成，开闸
 int mongodb_process_wx_pay_open( char *money,char *park_id,char * box_ip,char *plate, char *openid, char *flag, char* userid, const char* _in_dis_money, const char* _in_fact_money); // 出口，支付完成，开闸
+int mongodb_process_wx_tcp_pay_open( char *money,char *park_id,char * box_ip,char *plate,
+                                    char *_in_openid, char *flag, char* _in_userid,
+                                    const char* _in_dis_money, const char* _in_fact_money, int sock);
 int mongodb_process_wx_pay( char *money,char *park_id,char * box_ip,char *plate,char *openid, char *flag, char* userid);
 int mongodb_process_wx_pay_in(const char *money, const char *park_id, const char *plate,  const char *openid, const char* userid, const char *flag, const char* _in_dis_money, const char* _in_fact_money); // 场内 支付完成
+int mongodb_process_wx_tcp_pay_in(const char *_in_sum_money, const char *park_id, const char *plate,
+                                  const char *_in_openid, const char* _in_userid, const char *flag,
+                                  const char* _in_dis_money, const char* _in_fact_money, int sock);
 int mongodb_process_wx_fangxing(); // 微信支付成功后，需要放行,并语音播报
 int mongodb_process_wx_opendoor(); // 由wx向bled发送消息 (微信支付成功后，需要放行,并语音播报)
 int mogodbb_process_wx_sendto_bled(const std::string& _msg); // udp消息

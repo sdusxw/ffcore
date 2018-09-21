@@ -53,6 +53,7 @@ void* wx_tcp_thread(void *)
     pthread_t pid_wx_msg;
     pthread_create(&pid_wx_msg, NULL, wx_tcp_msg, NULL);
     pthread_detach(pid_wx_msg);
+    printf("wx_tcp线程启动成功\n");
     //开始侦听消息
     while (true) {
         tcp_server.get_message();
@@ -63,6 +64,8 @@ void* wx_tcp_thread(void *)
 void* wx_tcp_msg(void *) //wx_tcp消息处理线程
 {
     std::string log_str="";
+    char time_now[64];
+    time_t tm;
     while (true) {
         std::pair<int, string> msg_info;
         g_msg_buff.wait_and_pop(msg_info);
@@ -71,7 +74,6 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
         // 将收到的消息内容写入日志
         cout << " recv_msg " << msg << endl;
         write_log(msg.c_str());
-        char response_buf[1024] = "response";
         // Analyze the message
         Json::Reader reader;
         Json::Value json_object;
@@ -84,6 +86,7 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
         }
         else
         {
+            time_printf(time(&tm),time_now);   //获取当前时间
             pthread_mutex_lock(&mongo_mutex_car);
             
             if(mongodb_flag)
@@ -109,6 +112,62 @@ void* wx_tcp_msg(void *) //wx_tcp消息处理线程
                 
                 // 场内查询支付费用 char *park_id, char *box_ip, char *plate, char *openid, char* userid, char *outime
                 mongodb_process_wx_tcp_query_fee_in(str_cmd.c_str(), park_id.c_str(), plate.c_str(), openid.c_str(), userid.c_str(), outime.c_str(), sockfd);
+            }
+            else if (str_cmd == "pay") {
+                park_id = json_object["park_id"].asString();
+                
+                plate = json_object["plate"].asString();
+                openid = json_object["openid"].asString();
+                userid = json_object["userid"].asString();
+                money = json_object["money"].asString();
+                flag = json_object["flag"].asString();
+                
+                if(0 == flag.compare("open")){ // 出场口支付
+                    snprintf(log_buf_, sizeof(log_buf_), "[%s] 出场口支付费用 cmd[%s] flag[%s] line[%d]", __FUNCTION__, str_cmd.c_str(), flag.c_str(), __LINE__);
+                    write_log(log_buf_);
+                    
+                    // 优惠额度
+                    std::string dis_money = json_object["dis_money"].asString();
+                    // 应收额度
+                    std::string fact_money = json_object["fact_money"].asString();
+                    
+                    box_ip = json_object["box_ip"].asString();
+                    
+                    mongodb_process_wx_tcp_pay_open((char *)money.c_str(),(char *)park_id.c_str(),(char *)box_ip.c_str(),
+                                                      (char *)plate.c_str(),(char *)openid.c_str(),(char *)flag.c_str(),
+                                                      (char*)userid.c_str(), (char*)dis_money.c_str(), (char*)fact_money.c_str(), sockfd);
+                    
+                }else if(0 == flag.compare("pay")){ // 场内支付
+                    
+                    snprintf(log_buf_, sizeof(log_buf_), "[%s] 场内支付费用 cmd[%s] flag[%s] line[%d]", __FUNCTION__, str_cmd.c_str(), flag.c_str(), __LINE__);
+                    write_log(log_buf_);
+                    
+                    // 优惠额度
+                    std::string dis_money = json_object["dis_money"].asString();
+                    // 应收额度
+                    std::string fact_money = json_object["fact_money"].asString();
+                    
+                    mongodb_process_wx_tcp_pay_in(money.c_str(), park_id.c_str(), plate.c_str(),
+                                              openid.c_str(), userid.c_str(), flag.c_str(),
+                                              dis_money.c_str(), fact_money.c_str(), sockfd);
+                }
+                
+            }
+            else if(str_cmd == "out")
+            {
+                // 车主姓名，停车场id，停车场ip地址，车牌号，出场时间
+                name = json_object["name"].asString();
+                park_id = json_object["park_id"].asString();
+                box_ip = json_object["box_ip"].asString();
+                plate = json_object["plate"].asString();
+                openid = json_object["openid"].asString();
+                userid = json_object["userid"].asString();
+                outime = json_object["outime"].asString();
+                
+                snprintf(log_buf_, sizeof(log_buf_), "[%s] 出场 查询停车费用 cmd[%s] line[%d]", __FUNCTION__, str_cmd.c_str(), __LINE__);
+                write_log(log_buf_);
+                
+                mongodb_process_wx_tcp_carout((char *)name.c_str(),(char *)park_id.c_str(),(char *)box_ip.c_str(),(char *)plate.c_str(),(char *)openid.c_str(),time_now, (char*)userid.c_str(), sockfd);
             }
             if(mongodb_flag)
                 mongodb_exit();

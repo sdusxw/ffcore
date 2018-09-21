@@ -9913,7 +9913,147 @@ int mongodb_process_wx_pay_open( char *money,char *park_id,char * box_ip,char *p
 
     return mogodbb_process_wx_udp_send(send, host_server_ip, PORT_UDP_BCENTER_TO_ONCALLCLIENT);
 }
-
+/**
+ * @brief: 出口，支付完成，开闸 TCP方式。孙希伟 2018-9-21
+ * @param money
+ * @param park_id
+ * @param box_ip
+ * @param plate
+ * @param openid
+ * @param flag
+ * @param userid
+ * @return -1， 失败
+ *          0, 成功
+ */
+int mongodb_process_wx_tcp_pay_open( char *money,char *park_id,char * box_ip,char *plate,
+                                char *_in_openid, char *flag, char* _in_userid,
+                                const char* _in_dis_money, const char* _in_fact_money, int sock)
+{
+    snprintf(log_buf_, sizeof(log_buf_), "[%s] 处理出场逻辑 money[%s] dis_money[%s] fact_money[%s] park_id[%s] box_ip[%s] plate[%s] openid[%s] userid[%s] flag[%s] line[%d]",
+             __FUNCTION__, money, _in_dis_money, _in_fact_money, park_id, box_ip, plate, _in_openid, _in_userid, flag, __LINE__);
+    writelog(log_buf_);
+    
+    std::string userid_str = _in_userid;
+    std::string openid_str = _in_openid;
+    
+    std::string wx_zfb_id = "";
+    std::string wx_zfb_cmd = "";
+    
+    if(!openid_str.empty() && openid_str.length() > 0){
+        wx_zfb_id = openid_str;
+        wx_zfb_cmd = "微信";
+    }else if(!userid_str.empty() && userid_str.length() > 0){
+        wx_zfb_id = userid_str;
+        wx_zfb_cmd = "支付宝";
+    }else{
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] 入参异常 openid[%s] userid[%s] line[%d]", __FUNCTION__, _in_openid, _in_userid, __LINE__);
+        writelog(log_buf_);
+    }
+    
+    char time_now[64];
+    time_t tm;
+    time_printf(time(&tm),time_now);
+    
+    mongoc_collection_t *mongodb_table_wx_zfb = mongoc_client_get_collection(mongodb_client,"boondb","wx_zfb");   //wx表
+    
+    mongoc_cursor_t *cursor;
+    
+    bson_t *query;
+    bson_t result;
+    bson_iter_t iter;
+    const char *tmp;
+    const bson_t *tmp1;
+    bson_error_t error;
+    unsigned int length;
+    
+    query = bson_new();
+    
+    BSON_APPEND_UTF8(query, "plate", plate);
+    BSON_APPEND_UTF8(query, "sum_money", money);
+    BSON_APPEND_UTF8(query, "dis_money", _in_dis_money);
+    BSON_APPEND_UTF8(query, "fact_money", _in_fact_money);
+    BSON_APPEND_UTF8(query, "park_id", park_id);
+    BSON_APPEND_UTF8(query, "box_ip", box_ip); // 通道ip
+    BSON_APPEND_UTF8(query, "id", wx_zfb_id.c_str()); // openid / userid
+    BSON_APPEND_UTF8(query, "flag", flag); // open/pay
+    BSON_APPEND_UTF8(query, "time", time_now); //
+    BSON_APPEND_UTF8(query, "cmd", wx_zfb_cmd.c_str()); // 支付宝\微信
+    
+    bool insert_ret = true;
+    
+    // step1 写入数据库
+    if(!mongoc_collection_insert (mongodb_table_wx_zfb, MONGOC_INSERT_NONE, query, NULL, &error))
+    {
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] error! 插入wx_zfb表失败 line[%d]", __FUNCTION__, __LINE__);
+        writelog(log_buf_);
+        
+        fprintf(fp_log,"%s##mongodb_process_wx_pay 失败\n",time_now);
+        bson_destroy(query);
+        
+        insert_ret = false;
+        
+        //bson_destroy(query);
+        //mongoc_collection_destroy(mongodb_table_wx);
+        //  mongoc_client_destroy(mongodb_client);
+        
+        //return -1;
+    }else{
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] 写入wx_zfb表成功 plate[%s] sum_money[%s] dis_money[%s] fact_money[%s] park_id[%s] box_ip[%s] id[%s] flag[%s] time[%s] cmd[%s] line[%d]",
+                 __FUNCTION__, plate, money, _in_dis_money, _in_fact_money, park_id, box_ip, wx_zfb_id.c_str(), flag, time_now, wx_zfb_cmd.c_str(), __LINE__);
+        writelog(log_buf_);
+        
+        bson_destroy(query);
+        mongoc_collection_destroy(mongodb_table_wx_zfb);
+        //  mongoc_client_destroy(mongodb_client);
+    }
+    
+    // step2 发送抬起杆信号
+    std::string recv_flag = flag;
+    if(0 == recv_flag.compare("open")){ // 如果是open，说明是场外支付，即需要出场,此时需要发送太杆信号
+        
+        // 向bled发送抬杆信号
+        mongodb_process_wx_opendoor();
+        
+    }else{
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] 场内支付不抬杆 flag[%s] line[%d]", __FUNCTION__, flag, __LINE__);
+        writelog(log_buf_);
+    }
+    
+    // step3 发送支付成功消息
+    // 拼接标准的json包
+    rapidjson::Document doc;
+    doc.SetObject();
+    
+    Value value(rapidjson::kObjectType);
+    
+    doc.AddMember("cmd", C_CMD_PAY, doc.GetAllocator());
+    
+    value.SetString(StringRef(park_id));
+    doc.AddMember("park_id", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(_in_openid));
+    doc.AddMember("openid", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(_in_userid));
+    doc.AddMember("userid", value, doc.GetAllocator());
+    
+    if(insert_ret){
+        doc.AddMember("ret", "ok", doc.GetAllocator());
+    }else{
+        doc.AddMember("ret", "fail", doc.GetAllocator());
+    }
+    
+    rapidjson::StringBuffer buffer;//in rapidjson/stringbuffer.h
+    rapidjson::Writer<StringBuffer> writer(buffer); //in rapidjson/writer.h
+    doc.Accept(writer);
+    
+    std::string send = buffer.GetString(); //json_msg.toStyledString();
+    
+    //return mogodbb_process_wx_udp_send(send, host_server_ip, PORT_UDP_BCENTER_TO_ONCALLCLIENT);
+    mogodbb_process_wx_tcp_send(send, sock);
+    return 0;
+}
 /**
  * @brief: 场内支付，支付金额入库
  * @param money
@@ -10049,6 +10189,144 @@ int mongodb_process_wx_pay_in(const char *_in_sum_money, const char *park_id, co
     std::string send = buffer.GetString(); //json_msg.toStyledString();
 
     return mogodbb_process_wx_udp_send(send, host_server_ip, PORT_UDP_BCENTER_TO_ONCALLCLIENT);
+}
+/**
+ * @brief: 场内支付，支付金额入库  TCP  链接。 孙希伟2018-9-21
+ * @param money
+ * @param park_id
+ * @param box_ip
+ * @param plate
+ * @param openid
+ * @param flag
+ * @param userid
+ * @return
+ */
+int mongodb_process_wx_tcp_pay_in(const char *_in_sum_money, const char *park_id, const char *plate,
+                              const char *_in_openid, const char* _in_userid, const char *flag,
+                              const char* _in_dis_money, const char* _in_fact_money, int sock)
+{
+    snprintf(log_buf_, sizeof(log_buf_), "[%s] 处理场内支付 money[%s] dis_money[%s] fact_money[%s] park_id[%s] plate[%s] openid[%s] userid[%s] flag[%s] line[%d]",
+             __FUNCTION__, _in_sum_money, _in_dis_money, _in_fact_money, park_id, plate, _in_openid, _in_userid, flag, __LINE__);
+    writelog(log_buf_);
+    
+    std::string userid_str = _in_userid;
+    std::string openid_str = _in_openid;
+    
+    std::string wx_zfb_id = "";
+    std::string wx_zfb_cmd = "";
+    
+    if(!openid_str.empty() && openid_str.length() > 0){
+        wx_zfb_id = openid_str;
+        wx_zfb_cmd = "微信";
+    }else if(!userid_str.empty() && userid_str.length() > 0){
+        wx_zfb_id = userid_str;
+        wx_zfb_cmd = "支付宝";
+    }else{
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] 入参异常 openid[%s] userid[%s] line[%d]", __FUNCTION__, _in_openid, _in_userid, __LINE__);
+        writelog(log_buf_);
+    }
+    
+    char time_now[64];
+    time_t tm;
+    time_printf(time(&tm),time_now);
+    
+    mongoc_collection_t *mongodb_table_wx_zfb = mongoc_client_get_collection(mongodb_client,"boondb","wx_zfb");   //wx表
+    
+    mongoc_cursor_t *cursor;
+    
+    bson_t *query;
+    bson_t result;
+    bson_iter_t iter;
+    const char *tmp;
+    const bson_t *tmp1;
+    bson_error_t error;
+    unsigned int length;
+    
+    query = bson_new();
+    
+    BSON_APPEND_UTF8(query, "plate", plate);
+    BSON_APPEND_UTF8(query, "sum_money", _in_sum_money);
+    BSON_APPEND_UTF8(query, "dis_money", _in_dis_money);
+    BSON_APPEND_UTF8(query, "fact_money", _in_fact_money);
+    BSON_APPEND_UTF8(query, "park_id", park_id);
+    BSON_APPEND_UTF8(query, "id", wx_zfb_id.c_str()); // openid / userid
+    BSON_APPEND_UTF8(query, "flag", flag); // open/pay
+    BSON_APPEND_UTF8(query, "time", time_now); //
+    BSON_APPEND_UTF8(query, "cmd", wx_zfb_cmd.c_str()); // 支付宝\微信
+    
+    bool insert_ret = true;
+    
+    // step1 写入数据库
+    if(!mongoc_collection_insert (mongodb_table_wx_zfb, MONGOC_INSERT_NONE, query, NULL, &error))
+    {
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] error! 插入wx_zfb表失败 line[%d]", __FUNCTION__, __LINE__);
+        writelog(log_buf_);
+        
+        bson_destroy(query);
+        
+        insert_ret = false;
+        
+        //bson_destroy(query);
+        //mongoc_collection_destroy(mongodb_table_wx);
+        //  mongoc_client_destroy(mongodb_client);
+        
+        //return -1;
+    }else{
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] 写入wx表成功 plate[%s] sum_money[%s] dis_money[%s] fact_money[%s] park_id[%s] id[%s] flag[%s] time[%s] cmd[%s] line[%d]",
+                 __FUNCTION__, plate, _in_sum_money, _in_dis_money, _in_fact_money, park_id, wx_zfb_id.c_str(), flag, time_now, wx_zfb_cmd.c_str(), __LINE__);
+        writelog(log_buf_);
+        
+        bson_destroy(query);
+        mongoc_collection_destroy(mongodb_table_wx_zfb);
+        //  mongoc_client_destroy(mongodb_client);
+    }
+    
+    // step2 发送抬起杆信号
+    std::string recv_flag = flag;
+    if(0 == recv_flag.compare("open")){ // 如果是open，说明是场外支付，即需要出场,此时需要发送太杆信号
+        
+        // 向bled发送抬杆信号
+        mongodb_process_wx_opendoor();
+        
+    }else{
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] 场内支付 不抬杆 flag[%s] line[%d]", __FUNCTION__, flag, __LINE__);
+        writelog(log_buf_);
+    }
+    
+    // step3 发送支付成功消息
+    // 拼接标准的json包
+    rapidjson::Document doc;
+    doc.SetObject();
+    
+    Value value(rapidjson::kObjectType);
+    
+    doc.AddMember("cmd", C_CMD_PAY, doc.GetAllocator());
+    
+    value.SetString(StringRef(park_id));
+    doc.AddMember("park_id", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(_in_openid));
+    doc.AddMember("openid", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(_in_userid));
+    doc.AddMember("userid", value, doc.GetAllocator());
+    
+    if(insert_ret){
+        doc.AddMember("ret", "ok", doc.GetAllocator());
+    }else{
+        doc.AddMember("ret", "fail", doc.GetAllocator());
+    }
+    
+    rapidjson::StringBuffer buffer;//in rapidjson/stringbuffer.h
+    rapidjson::Writer<StringBuffer> writer(buffer); //in rapidjson/writer.h
+    doc.Accept(writer);
+    
+    std::string send = buffer.GetString(); //json_msg.toStyledString();
+    
+    //return mogodbb_process_wx_udp_send(send, host_server_ip, PORT_UDP_BCENTER_TO_ONCALLCLIENT);
+    mogodbb_process_wx_tcp_send(send, sock);
+    return 0;
 }
 
 /**
@@ -11402,6 +11680,367 @@ int mongodb_process_wx_carout(char *name,char *park_id,char *box_ip,char *plate1
     }
     close(sock);
 
+    return 0;
+}
+
+int mongodb_process_wx_tcp_carout(char *name,char *park_id,char *box_ip,char *plate1,char *openid, char *outime, char* userid, int sock)
+{
+    char time_now[64];
+    time_t tm;
+    time_printf(time(&tm),time_now);
+    
+    //  mongoc_client_t *mongodb_client;
+    mongoc_collection_t *mongodb_table_car;    //car表
+    mongoc_collection_t *mongodb_table_park;    //car表
+    mongoc_collection_t *mongodb_table_carinpark;    //
+    mongoc_collection_t *mongodb_table_chargerule;    //
+    mongoc_collection_t *mongodb_table_park_set;    //
+    mongoc_collection_t *mongodb_table_wx_zfb;    //
+    //  mongodb_client = mongoc_client_new(str_con);
+    
+    mongodb_table_car = mongoc_client_get_collection(mongodb_client,"boondb","car");   //channel表
+    mongodb_table_carinpark = mongoc_client_get_collection(mongodb_client,"boondb","carinpark");   //device表
+    mongodb_table_chargerule = mongoc_client_get_collection(mongodb_client,"boondb","chargerule");   //device表
+    mongodb_table_park = mongoc_client_get_collection(mongodb_client,"boondb","park");   //device表
+    mongodb_table_park_set = mongoc_client_get_collection(mongodb_client,"boondb","park_set");   //device表
+    mongodb_table_wx_zfb = mongoc_client_get_collection(mongodb_client,"boondb","wx_zfb");   //device表
+    
+    mongoc_cursor_t *cursor;
+    
+    bson_t *query;
+    bson_t *query_tmp;
+    bson_t result;
+    bson_iter_t iter;
+    const char *tmp;
+    const bson_t *tmp1;
+    bson_error_t error;
+    unsigned int length;
+    
+    char cartype[24];
+    char parkid[128];
+    char parkname[128];
+    char in_time[24] = {0};
+    char charge_rule[256];
+    memset(charge_rule,0,256);
+    memset(in_time,0,24);
+    memset(cartype,0,24);
+    char plate[128];
+    char tmp2[24];
+    memset(plate,0,128);
+    memset(parkname,0,128);
+    memset(parkid,0,128);
+    
+    // 车牌长度异常
+    if(strlen(plate1) < 3)
+    {
+        //fprintf(fp_log,"%s##%s 失败 line[%d]\n",time_now, __FUNCTION__, __LINE__);
+        
+        strncpy(plate, out_plate_last,strlen(out_plate_last));
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] error, 车牌号长度异常len[%ld], 取车牌out_plate_last[%s] line[%d]", __FUNCTION__, strlen(plate1), plate, __LINE__);
+        writelog(log_buf_);
+    }
+    else
+    {
+        strncpy(plate,plate1,strlen(plate1));
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] 收到车牌 plate[%s] line[%d]", __FUNCTION__, plate, __LINE__);
+        writelog(log_buf_);
+    }
+    
+    // step1 根据车牌号在car表里面查询车辆类型, 查询出临时车，贵宾车，月租车，
+    mongodb_query_cartype(plate, cartype);
+    
+    query = bson_new();
+    
+    // step2 查询在场表，
+    BSON_APPEND_UTF8(query, "carinpark_plate_id",plate);
+    
+    cursor = mongoc_collection_find (mongodb_table_carinpark, MONGOC_QUERY_NONE, 0, 0, 0, query, NULL, NULL); //查car表
+    if(mongoc_cursor_error(cursor,&error))
+    {
+        bson_destroy(query);
+        mongoc_cursor_destroy(cursor);
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] error! 没有在carinpark表找到车牌[%s]的在场记录, return line[%d]", __FUNCTION__, plate, __LINE__);
+        writelog(log_buf_);
+        
+        return -1;
+    }
+    
+    while(!mongoc_cursor_error(cursor, &error) && mongoc_cursor_more(cursor)) //得到car表的每一条记录
+    {
+        if (mongoc_cursor_next (cursor, &tmp1))
+        {
+            bson_copy_to(tmp1,&result); //得到一条完整的记录
+            if (bson_iter_init (&iter, &result) && bson_iter_find (&iter, "carinpark_in_time"))
+            {
+                tmp = bson_iter_utf8(&iter, &length);
+                
+                memcpy(in_time,tmp,length);
+                
+                snprintf(log_buf_, sizeof(log_buf_), "[%s] 在carinpark表中找到车牌[%s]的入场时间[%s] line[%d]", __FUNCTION__, plate, in_time, __LINE__);
+                writelog(log_buf_);
+            }
+            bson_destroy(&result);
+        }
+    }
+    bson_destroy(query);
+    mongoc_cursor_destroy(cursor);
+    
+    query = bson_new();
+    
+    // 查询收费规则
+    BSON_APPEND_UTF8(query, "chargerule_car_type", cartype);
+    cursor = mongoc_collection_find (mongodb_table_chargerule, MONGOC_QUERY_NONE, 0, 0, 0, query, NULL, NULL); //查car表
+    if(mongoc_cursor_error(cursor,&error))
+    {
+        bson_destroy(query);
+        
+        mongoc_cursor_destroy(cursor);
+        
+        fprintf(fp_log,"%s##mongodb_process_wx_carout 失败\n",time_now);
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] error! 没有在chargerule表中找车辆类型[%s]对应的收费规则, return line[%d]", __FUNCTION__, cartype, __LINE__);
+        writelog(log_buf_);
+        
+        return -1;
+    }
+    
+    if(!mongoc_cursor_error(cursor,&error) && mongoc_cursor_more(cursor)) //得到car表的每一条记录
+    {
+        if (mongoc_cursor_next (cursor, &tmp1))
+        {
+            bson_copy_to(tmp1, &result); //得到一条完整的记录
+            if (bson_iter_init(&iter, &result) && bson_iter_find (&iter, "chargerule_name_id"))
+            {
+                tmp = bson_iter_utf8(&iter,&length);
+                memset(charge_rule,0,256);
+                memcpy(charge_rule,tmp,length);
+                
+                snprintf(log_buf_, sizeof(log_buf_), "[%s] 在chargerule表中找到车辆类型[%s]对应的收费规则[%s] line[%d]", __FUNCTION__, cartype, charge_rule, __LINE__);
+                writelog(log_buf_);
+            }
+            bson_destroy(&result);
+        }
+    }
+    bson_destroy(query);
+    
+    mongoc_cursor_destroy(cursor);
+    
+    query = bson_new();
+    cursor = mongoc_collection_find (mongodb_table_park, MONGOC_QUERY_NONE, 0, 0, 0, query, NULL, NULL); //查car表
+    if(mongoc_cursor_error(cursor,&error))
+    {
+        bson_destroy(query);
+        
+        mongoc_cursor_destroy(cursor);
+        
+        fprintf(fp_log,"%s##mongodb_process_wx_carout 失败\n",time_now);
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] error! 查找park表失败, 车场信息不存在. line[%d]", __FUNCTION__, __LINE__);
+        writelog(log_buf_);
+        
+        return -1;
+    }
+    
+    if(!mongoc_cursor_error(cursor,&error)&&mongoc_cursor_more(cursor)) //得到car表的每一条记录
+    {
+        if (mongoc_cursor_next (cursor, &tmp1))
+        {
+            bson_copy_to(tmp1,&result); //得到一条完整的记录
+            if (bson_iter_init (&iter, &result) &&bson_iter_find (&iter, "park_id"))
+            {
+                tmp = bson_iter_utf8(&iter,&length);
+                memset(parkid,0,256);
+                memcpy(parkid,tmp,length);
+                
+                snprintf(log_buf_, sizeof(log_buf_), "[%s] 在park表中找到park_id[%s] line[%d]", __FUNCTION__, parkid, __LINE__);
+                writelog(log_buf_);
+            }
+            bson_destroy(&result);
+        }
+    }
+    bson_destroy(query);
+    mongoc_cursor_destroy(cursor);
+    
+    query = bson_new();
+    cursor = mongoc_collection_find (mongodb_table_park_set, MONGOC_QUERY_NONE, 0, 0, 0, query, NULL, NULL); //查car表
+    if(mongoc_cursor_error(cursor,&error))
+    {
+        bson_destroy(query);
+        
+        mongoc_cursor_destroy(cursor);
+        
+        fprintf(fp_log,"%s##mongodb_process_wx_carout 失败\n",time_now);
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] error! 查找park_set表失败, park_set记录为空! line[%d]", __FUNCTION__, __LINE__);
+        writelog(log_buf_);
+        
+        return -1;
+    }
+    if(!mongoc_cursor_error(cursor,&error) && mongoc_cursor_more(cursor)) //得到car表的每一条记录
+    {
+        if (mongoc_cursor_next (cursor, &tmp1))
+        {
+            bson_copy_to(tmp1,&result); //得到一条完整的记录
+            if (bson_iter_init (&iter, &result) &&bson_iter_find (&iter, "park_name"))
+            {
+                tmp = bson_iter_utf8(&iter,&length);
+                memcpy(parkname,tmp,length);
+                
+                snprintf(log_buf_, sizeof(log_buf_), "[%s] 在park_set表中找到park_name[%s] line[%d]", __FUNCTION__, parkname, __LINE__);
+                writelog(log_buf_);
+            }
+            bson_destroy(&result);
+        }
+    }
+    bson_destroy(query);
+    mongoc_cursor_destroy(cursor);
+    
+    mongoc_collection_destroy(mongodb_table_car);
+    mongoc_collection_destroy(mongodb_table_chargerule);
+    mongoc_collection_destroy(mongodb_table_carinpark);
+    mongoc_collection_destroy(mongodb_table_park);
+    mongoc_collection_destroy(mongodb_table_park_set);
+    
+    snprintf(log_buf_, sizeof(log_buf_), "[%s] 开始计费 收费规则[%s] 入场时间[%s] 出场时间[%s] 车辆类型[%s] 车场id[%s] 车牌[%s] line[%d]",
+             __FUNCTION__, charge_rule, in_time, outime, cartype, parkid, plate, __LINE__);
+    writelog(log_buf_);
+    
+    fprintf(fp_log,"%s##开始计费 %s %s %s %s %s %s  \n",time_now,charge_rule,in_time,outime,cartype,parkid,plate);
+    
+    // 开始计费
+    int fee = mongodb_cal_fee(charge_rule,in_time,outime,cartype,parkid,plate);
+    
+    fprintf(fp_log,"%s##应缴费%d元\n",time_now,fee);
+    
+    snprintf(log_buf_, sizeof(log_buf_), "[%s] 应收金额[%d] line[%d]", __FUNCTION__, fee, __LINE__);
+    writelog(log_buf_);
+    
+    int sum_money = 0;
+    query = bson_new();
+    
+    query_tmp = bson_new();
+    
+    BSON_APPEND_UTF8(query, "plate",plate); // 车牌号
+    BSON_APPEND_UTF8(query_tmp, "$gte",in_time);
+    BSON_APPEND_DOCUMENT(query, "time",query_tmp); // 支付时间
+    //query = BCON_NEW ("$gte", "{", "caroutrec_out_time", BCON_UTF8 (in_time),"}");
+    
+    // 查询是否已经场内支付过
+    cursor = mongoc_collection_find (mongodb_table_wx_zfb, MONGOC_QUERY_NONE, 0, 0, 0, query, NULL, NULL); //查car表
+    if(mongoc_cursor_error(cursor,&error))
+    {
+        bson_destroy(query);
+        
+        mongoc_cursor_destroy(cursor);
+        
+        fprintf(fp_log,"%s##mongodb_process_fee失败\n",time_now);
+        
+        snprintf(log_buf_, sizeof(log_buf_), "[%s] warn! 查询场内支付记录为空, 未曾缴费. line[%d]", __FUNCTION__, __LINE__);
+        writelog(log_buf_);
+        
+        return -1;
+    }
+    
+    int jiaofei_counts = 1;
+    while(!mongoc_cursor_error(cursor,&error)&&mongoc_cursor_more(cursor)) //得到car表的每一条记录
+    {
+        if (mongoc_cursor_next (cursor, &tmp1))
+        {
+            
+            bson_copy_to(tmp1,&result); //得到一条完整的记录
+            if (bson_iter_init (&iter, &result) &&bson_iter_find (&iter, "sum_money")) // 总金额
+            {
+                tmp = bson_iter_utf8(&iter,&length);
+                memset(tmp2,0,24);
+                memcpy(tmp2,tmp,length);
+                
+                sum_money = sum_money + atoi(tmp2);
+                
+                snprintf(log_buf_, sizeof(log_buf_), "[%s] 查询wx_zfb表 查询场内第[%d]次支付为[%s]元 累积[%d]元 查询条件 plate[%s] in_time[%s] line[%d]",
+                         __FUNCTION__, jiaofei_counts++, tmp2, sum_money, plate, in_time, __LINE__);
+                writelog(log_buf_);
+            }
+            bson_destroy(&result);
+        }
+    }
+    
+    bson_destroy(query);
+    bson_destroy(query_tmp);
+    mongoc_cursor_destroy(cursor);
+    mongoc_collection_destroy(mongodb_table_wx_zfb);
+    
+    //  mongoc_client_destroy(mongodb_client);
+    fprintf(fp_log,"%s##应缴费%d元,微信已缴费%d元 line[%d]\n",time_now,fee, sum_money, __LINE__);
+    
+    snprintf(log_buf_, sizeof(log_buf_), "[%s] 折算后 总需缴费[%d]元, 场内微信已支付[%d]元, 最后应收[%d]元 line[%d]", __FUNCTION__, fee, sum_money, fee-sum_money, __LINE__);
+    writelog(log_buf_);
+    
+    fee = fee - sum_money;
+    
+    if(fee < 0)fee = 0;
+    
+    // 拼接标准的json包
+    rapidjson::Document doc;
+    doc.SetObject();
+    
+    Value value(rapidjson::kObjectType);
+    
+    doc.AddMember("cmd", C_CMD_OUT, doc.GetAllocator());
+    
+    value.SetString(StringRef(park_id));
+    doc.AddMember("park_id", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(parkname));
+    doc.AddMember("park_name", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(plate));
+    doc.AddMember("plate", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(openid));
+    doc.AddMember("openid", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(userid));
+    doc.AddMember("userid", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(cartype));
+    doc.AddMember("cartype", value, doc.GetAllocator());
+    
+    value.SetString(StringRef(in_time));
+    doc.AddMember("intime", value, doc.GetAllocator());
+    
+    int duration = (get_tick(outime) - get_tick(in_time))/60;
+    
+    snprintf(log_buf_, sizeof(log_buf_), "[%s] 停车[%d]分钟 入场时间[%s] 出场时间[%s] line[%d]", __FUNCTION__, duration, in_time, outime, __LINE__);
+    writelog(log_buf_);
+    
+    char du[24];
+    memset(du,0,24);
+    sprintf(du,"%d",duration);
+    
+    value.SetString(StringRef(du));
+    doc.AddMember("duration", value, doc.GetAllocator());
+    
+    //json_msg["duration"] = Json::Value(du);
+    
+    char mon[24];
+    memset(mon,0,24);
+    sprintf(mon,"%d",fee);
+    
+    value.SetString(StringRef(mon));
+    doc.AddMember("money", value, doc.GetAllocator());
+    
+    //json_msg["money"] = Json::Value(mon);
+    
+    rapidjson::StringBuffer buffer;//in rapidjson/stringbuffer.h
+    rapidjson::Writer<StringBuffer> writer(buffer); //in rapidjson/writer.h
+    doc.Accept(writer);
+    
+    std::string send = buffer.GetString(); //json_msg.toStyledString();
+    
+    mogodbb_process_wx_tcp_send(send, sock);
     return 0;
 }
 
